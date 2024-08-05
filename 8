@@ -1,0 +1,730 @@
+root@opexwise-ml3:/home/balasubramaniyan.d/irise_llama# docker-compose up
+[+] Running 2/1
+ ⠿ Network irise_llama_default          Created                                                                               0.1s
+ ⠿ Container irise_llama-irise_llama-1  Created                                                                               0.0s
+Attaching to irise_llama-irise_llama-1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 0
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 0
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 429, in cached_file
+irise_llama-irise_llama-1  |     local_files_only=local_files_only,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/utils/_validators.py", line 118, in _inner_fn
+irise_llama-irise_llama-1  |     return fn(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/huggingface_hub/file_download.py", line 1292, in hf_hub_download
+irise_llama-irise_llama-1  |     "Connection error, and we cannot find the requested files in"
+irise_llama-irise_llama-1  | huggingface_hub.utils._errors.LocalEntryNotFoundError: Connection error, and we cannot find the requested files in the disk cache. Please try again or make sure your Internet connection is on.
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | During handling of the above exception, another exception occurred:
+irise_llama-irise_llama-1  | 
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 31, in <module>
+irise_llama-irise_llama-1  |     tokenizer = AutoTokenizer.from_pretrained(model,token = "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")
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/tokenization_auto.py", line 659, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 944, in from_pretrained
+irise_llama-irise_llama-1  |     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+irise_llama-irise_llama-1  |     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 641, in _get_config_dict
+irise_llama-irise_llama-1  |     _commit_hash=commit_hash,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/utils/hub.py", line 453, in cached_file
+irise_llama-irise_llama-1  |     f"We couldn't connect to '{HUGGINGFACE_CO_RESOLVE_ENDPOINT}' to load this file, couldn't find it in the"
+irise_llama-irise_llama-1  | OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like meta-llama/Meta-Llama-3-8B is not the path to a directory containing a file named config.json.
+irise_llama-irise_llama-1  | Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+irise_llama-irise_llama-1 exited with code 1
+^CGracefully stopping... (press Ctrl+C again to force)
+[+] Running 1/0
+ ⠿ Container irise_llama-irise_llama-1  Stopped                                                                               0.0s
+
+
