@@ -1,0 +1,12 @@
+version: "2.1"
+networks:
+  iopex_network:
+    external: true
+services:
+  kafka_sentiment_analysis:
+    image: iopexlabs/mlkafka:kafka_sentiment_analysis.0.1
+    command: uvicorn app:app --host 0.0.0.0
+    ports:
+      - 8060:8000
+    networks:
+      - iopex_network
