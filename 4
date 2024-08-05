@@ -1,0 +1,21 @@
+version: "3"
+networks:
+  iopex_network:
+    external: true
+services:
+  kafka_ner:
+    image: belgin121/kafka_entity:0.3
+    restart: always
+    ports:
+      - "8055:8006"
+    volumes:
+      - "./logs:/var/opt/logs"
+    environment:
+       - SERVER_NAME=kafka_test
+       - HOST_ADDRESS=3.109.160.55:9092
+#    deploy:
+#       resources:
+#          reservations:
+#            devices:
+#              - capabilities: [gpu]
+
