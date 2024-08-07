@@ -1,0 +1,174 @@
+root@opexwise-ml2:/home/bala.d/irise_llama# docker exec -it irise_llama-irise_llama-1 /bin/bash
+root@29467bf8865d:/app# ls
+Dockerfile  app.py		   docker-compose.yml  model	    requirements.txt  test.ipynb
+README.md   bk-docker-compose.yml  main.py	       prestart.sh  root
+root@29467bf8865d:/app# cd model/
+root@29467bf8865d:/app/model# ls
+README.md      generation_config.json		 model-00003-of-00004.safetensors  special_tokens_map.json
+USE_POLICY.md  model-00001-of-00004.safetensors  model-00004-of-00004.safetensors  tokenizer.json
+config.json    model-00002-of-00004.safetensors  model.safetensors.index.json	   tokenizer_config.json
+root@29467bf8865d:/app/model# cd ..
+root@29467bf8865d:/app# sh -x prestart.sh 
++ echo Running inside /app/prestart.sh, you could add migrations to this file, e.g.:
+Running inside /app/prestart.sh, you could add migrations to this file, e.g.:
++ echo 
+#! /usr/bin/env bash
+
+# Let the DB start
+sleep 10;
+# Run migrations
+alembic upgrade head
+
+
+#! /usr/bin/env bash
+
+# Let the DB start
+sleep 10;
+# Run migrations
+alembic upgrade head
+
+root@29467bf8865d:/app# exit
+exit
+root@opexwise-ml2:/home/bala.d/irise_llama# nvidia-smi
+Wed Aug  7 22:05:47 2024       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.171.04             Driver Version: 535.171.04   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla P40                      Off | 00000000:04:00.0 Off |                    0 |
+| N/A   37C    P0              50W / 250W |  21782MiB / 23040MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  Tesla P40                      Off | 00000000:82:00.0 Off |                    0 |
+| N/A   27C    P8              10W / 250W |      2MiB / 23040MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A   2431890      C   python                                      858MiB |
+|    0   N/A  N/A   2432096      C   /usr/local/bin/python                     19816MiB |
+|    0   N/A  N/A   2439384      C   /usr/local/bin/python                      1106MiB |
++---------------------------------------------------------------------------------------+
+root@opexwise-ml2:/home/bala.d/irise_llama# docker-compose logs -f
+Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.22s/it]
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+irise_llama-irise_llama-1  |     sys.exit(main())
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1157, in __call__
+irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1078, in main
+irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 1434, in invoke
+irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/click/core.py", line 783, in invoke
+irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 449, in main
+irise_llama-irise_llama-1  |     h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/main.py", line 569, in run
+irise_llama-irise_llama-1  |     server.run()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 60, in run
+irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/asyncio/runners.py", line 43, in run
+irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
+irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/server.py", line 67, in serve
+irise_llama-irise_llama-1  |     config.load()
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/config.py", line 477, in load
+irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/importer.py", line 21, in import_from_string
+irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+irise_llama-irise_llama-1  |   File "./app.py", line 35, in <module>
+irise_llama-irise_llama-1  |     device='cuda'
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/__init__.py", line 795, in pipeline
+irise_llama-irise_llama-1  |     **model_kwargs,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 269, in infer_framework_load_model
+irise_llama-irise_llama-1  |     model = model_class.from_pretrained(model, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/auto/auto_factory.py", line 485, in from_pretrained
+irise_llama-irise_llama-1  |     pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/modeling_utils.py", line 2896, in from_pretrained
+irise_llama-irise_llama-1  |     keep_in_fp32_modules=keep_in_fp32_modules,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/modeling_utils.py", line 3278, in _load_pretrained_model
+irise_llama-irise_llama-1  |     raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+irise_llama-irise_llama-1  | RuntimeError: Error(s) in loading state_dict for LlamaForCausalLM:
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.0.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.0.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.1.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.1.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.2.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.2.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.3.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.3.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.4.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.4.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.5.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.5.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.6.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.6.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.7.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.7.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.8.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.8.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.9.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.9.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.10.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.10.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.11.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.11.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.12.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.12.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.13.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.13.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.14.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.14.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.15.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.15.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.16.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.16.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.17.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.17.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.18.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.18.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.19.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.19.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.20.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.20.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.21.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.21.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.22.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.22.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.23.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.23.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.24.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.24.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.25.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.25.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.26.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.26.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.27.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.27.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.28.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.28.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.29.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.29.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.30.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.30.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.31.self_attn.k_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	size mismatch for model.layers.31.self_attn.v_proj.weight: copying a param with shape torch.Size([1024, 4096]) from checkpoint, the shape in current model is torch.Size([4096, 4096]).
+irise_llama-irise_llama-1  | 	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+
+
