@@ -1,0 +1,13 @@
+irise_llama-irise_llama-1  | The model weights are not tied. Please use the `tie_weights` method before using the `infer_auto_device` function.
+Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.71s/it]
+irise_llama-irise_llama-1  | Some weights of LlamaForCausalLM were not initialized from the model checkpoint at model and are newly initialized: ['model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq']
+irise_llama-irise_llama-1  | You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+irise_llama-irise_llama-1  | Xformers is not installed correctly. If you want to use memory_efficient_attention to accelerate training use the following command to install Xformers
+irise_llama-irise_llama-1  | pip install xformers.
+irise_llama-irise_llama-1  | Pipeline created
+irise_llama-irise_llama-1  | INFO:     Started server process [1]
+irise_llama-irise_llama-1  | INFO:     Waiting for application startup.
+irise_llama-irise_llama-1  | INFO:     Application startup complete.
+irise_llama-irise_llama-1  | INFO:     Uvicorn running on http://0.0.0.0:8070 (Press CTRL+C to quit)
+
+
