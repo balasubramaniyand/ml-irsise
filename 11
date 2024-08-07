@@ -1,0 +1,47 @@
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.171.04             Driver Version: 535.171.04   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla P40                      Off | 00000000:04:00.0 Off |                    0 |
+| N/A   38C    P0             124W / 250W |  21778MiB / 23040MiB |     91%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  Tesla P40                      Off | 00000000:82:00.0 Off |                    0 |
+| N/A   27C    P8              10W / 250W |      2MiB / 23040MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A   2431890      C   python                                      858MiB |
+|    0   N/A  N/A   2432096      C   /usr/local/bin/python                     19812MiB |
+|    0   N/A  N/A   2439384      C   /usr/local/bin/python                      1106MiB |
++---------------------------------------------------------------------------------------+
+
+
+
+
+version: '3.7'
+services:
+  irise_llama:
+    image: cio/irise:0.1 
+    command: uvicorn app:app --host 0.0.0.0 
+    ports:
+      - 8070:8000
+    volumes:
+    - ./app.py:/app/app.py
+    - ./root:/root
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+              count: 1
+
