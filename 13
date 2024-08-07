@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  irise_llama:
+    image: cio/irise:0.4 
+    command: uvicorn app:app --host 0.0.0.0 
+    ports:
+      - 8070:8000
+    volumes:
+      - ./app.py:/app/app.py
+      - ./root:/root
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ['1']
+    runtime: nvidia
