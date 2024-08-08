@@ -31,3 +31,76 @@ WORKDIR /app
 
 # Run the application
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# docker build -t cio/irisellm:0.3 .
+[+] Building 24.6s (8/13)                                                                                           docker:default
+ => [internal] load build definition from Dockerfile                                                                          0.0s
+ => => transferring dockerfile: 1.20kB                                                                                        0.0s
+ => [internal] load metadata for docker.io/nvidia/cuda:12.2.0-base-ubuntu20.04                                                1.6s
+ => [auth] nvidia/cuda:pull token for registry-1.docker.io                                                                    0.0s
+ => [internal] load .dockerignore                                                                                             0.0s
+ => => transferring context: 2B                                                                                               0.0s
+ => [1/8] FROM docker.io/nvidia/cuda:12.2.0-base-ubuntu20.04@sha256:e828de149557f739597a551402f5229d1ed42e6bc4296b4dd9c3b4d3  3.0s
+ => => resolve docker.io/nvidia/cuda:12.2.0-base-ubuntu20.04@sha256:e828de149557f739597a551402f5229d1ed42e6bc4296b4dd9c3b4d3  0.0s
+ => => sha256:e828de149557f739597a551402f5229d1ed42e6bc4296b4dd9c3b4d3cdd915d9 743B / 743B                                    0.0s
+ => => sha256:0a42e6fffe9f41cbb0d15dcf3e178b86e99cba9a3c209a035a6fa155e9716873 1.37kB / 1.37kB                                0.0s
+ => => sha256:2664f46b9de0e8f968f4b0f52906ef8d20cdf80d06b8765e8156b11729e9244d 8.60kB / 8.60kB                                0.0s
+ => => sha256:24283ffef4b83eea738ede92363bea5df7fc4e5fa3dabe3214543ab16439b800 7.94MB / 7.94MB                                0.3s
+ => => sha256:4f0ee233beccc13c4712d3a8fd6d22dca5b654e7e4338c0432ce12a39cf983b0 56.08MB / 56.08MB                              1.1s
+ => => sha256:d9a9ef6bf4a38fcb35e7e74a154698bd652500a098e8aed4c581b01ff42a69a3 187B / 187B                                    0.1s
+ => => sha256:e9152f275e8518ef7615b57ee56ac7655f0bec8fd94dabe127f9bcc5493e6199 6.89kB / 6.89kB                                0.3s
+ => => extracting sha256:24283ffef4b83eea738ede92363bea5df7fc4e5fa3dabe3214543ab16439b800                                     0.4s
+ => => extracting sha256:4f0ee233beccc13c4712d3a8fd6d22dca5b654e7e4338c0432ce12a39cf983b0                                     1.8s
+ => => extracting sha256:d9a9ef6bf4a38fcb35e7e74a154698bd652500a098e8aed4c581b01ff42a69a3                                     0.0s
+ => => extracting sha256:e9152f275e8518ef7615b57ee56ac7655f0bec8fd94dabe127f9bcc5493e6199                                     0.0s
+ => [internal] load build context                                                                                             0.0s
+ => => transferring context: 12.14kB                                                                                          0.0s
+ => [2/8] RUN apt-get update && apt-get install -y --no-install-recommends     gnupg2 curl ca-certificates lsb-release       12.9s
+ => ERROR [3/8] RUN apt-get update && apt-get install -y --no-install-recommends     libcudnn8=8.6.0.163-1+cuda12.2     libc  7.1s 
+------                                                                                                                             
+ > [3/8] RUN apt-get update && apt-get install -y --no-install-recommends     libcudnn8=8.6.0.163-1+cuda12.2     libcudnn8-dev=8.6.0.163-1+cuda12.2     && apt-get clean && rm -rf /var/lib/apt/lists/*:                                                              
+0.429 Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [128 kB]                                                    
+0.555 Get:2 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]                                                              
+0.792 Get:3 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64  InRelease [1581 B]                         
+0.930 Get:4 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [1256 kB]
+1.143 Get:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64  Packages [1618 kB]
+1.273 Get:6 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [3870 kB]
+1.282 Get:7 http://archive.ubuntu.com/ubuntu focal-updates InRelease [128 kB]
+1.420 Get:8 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [30.9 kB]
+1.420 Get:9 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [3849 kB]
+1.457 Get:10 http://archive.ubuntu.com/ubuntu focal-backports InRelease [128 kB]
+1.636 Get:11 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
+1.645 Get:12 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]
+1.966 Get:13 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]
+1.991 Get:14 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages [11.3 MB]
+2.729 Get:15 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [4335 kB]
+2.885 Get:16 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1542 kB]
+3.004 Get:17 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [33.5 kB]
+3.005 Get:18 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [4000 kB]
+3.303 Get:19 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [28.6 kB]
+3.303 Get:20 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [55.2 kB]
+4.108 Fetched 34.1 MB in 4s (8931 kB/s)
+4.108 Reading package lists...
+5.358 Reading package lists...
+6.712 Building dependency tree...
+6.945 Reading state information...
+6.972 E: Version '8.6.0.163-1+cuda12.2' for 'libcudnn8' was not found
+6.972 E: Version '8.6.0.163-1+cuda12.2' for 'libcudnn8-dev' was not found
+------
+
+ 3 warnings found (use docker --debug to expand):
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 17)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+Dockerfile:10
+--------------------
+   9 |     # Install additional libraries and dependencies
+  10 | >>> RUN apt-get update && apt-get install -y --no-install-recommends \
+  11 | >>>     libcudnn8=8.6.0.163-1+cuda12.2 \
+  12 | >>>     libcudnn8-dev=8.6.0.163-1+cuda12.2 \
+  13 | >>>     && apt-get clean && rm -rf /var/lib/apt/lists/*
+  14 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     libcudnn8=8.6.0.163-1+cuda12.2     libcudnn8-dev=8.6.0.163-1+cuda12.2     && apt-get clean && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# 
+
