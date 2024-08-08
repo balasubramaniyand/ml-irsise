@@ -29,5 +29,34 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 WORKDIR /app
 
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# docker build -t cio/irisellm:0.3 .
+[+] Building 182.6s (8/12)                                                                                          docker:default
+ => [internal] load build definition from Dockerfile                                                                          0.0s
+ => => transferring dockerfile: 1.16kB                                                                                        0.0s
+ => [internal] load metadata for docker.io/nvidia/cuda:12.2.0-base-ubuntu20.04                                                0.5s
+ => [internal] load .dockerignore                                                                                             0.0s
+ => => transferring context: 2B                                                                                               0.0s
+ => [internal] load build context                                                                                             0.0s
+ => => transferring context: 12.10kB                                                                                          0.0s
+ => [1/8] FROM docker.io/nvidia/cuda:12.2.0-base-ubuntu20.04@sha256:e828de149557f739597a551402f5229d1ed42e6bc4296b4dd9c3b4d3  0.0s
+ => CACHED [2/8] RUN apt-get update && apt-get install -y --no-install-recommends     gnupg2 curl ca-certificates lsb-releas  0.0s
+ => [3/8] RUN apt-get update && apt-get install -y --no-install-recommends     libcudnn8     libcudnn8-dev     && apt-get   181.7s
+ => ERROR [4/8] RUN pip install --no-cache-dir -U pip &&     pip install --no-cache-dir uvicorn gunicorn fastapi              0.3s 
+------                                                                                                                             
+ > [4/8] RUN pip install --no-cache-dir -U pip &&     pip install --no-cache-dir uvicorn gunicorn fastapi:                         
+0.247 /bin/sh: 1: pip: not found                                                                                                   
+------                                                                                                                             
+Dockerfile:21                                                                                                                      
+--------------------
+  20 |     # Use the Uvicorn-Gunicorn-FastAPI image for the application
+  21 | >>> RUN pip install --no-cache-dir -U pip && \
+  22 | >>>     pip install --no-cache-dir uvicorn gunicorn fastapi
+  23 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c pip install --no-cache-dir -U pip &&     pip install --no-cache-dir uvicorn gunicorn fastapi" did not complete successfully: exit code: 127
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# 
+
+
+
 # Run the application
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
