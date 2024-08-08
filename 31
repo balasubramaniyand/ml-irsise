@@ -1,0 +1,104 @@
+ERROR: failed to solve: process "/bin/sh -c pip install -r /app/requirements.txt" did not complete successfully: exit code: 1
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# vi requirements.txt 
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# docker build -t cio/irisellm:0.0 .
+[+] Building 6.2s (9/12)                                                                                            docker:default
+ => [internal] load build definition from Dockerfile                                                                          0.0s
+ => => transferring dockerfile: 1.94kB                                                                                        0.0s
+ => [internal] load metadata for docker.io/tiangolo/uvicorn-gunicorn-fastapi:python3.7                                        0.5s
+ => [internal] load .dockerignore                                                                                             0.0s
+ => => transferring context: 2B                                                                                               0.0s
+ => [internal] load build context                                                                                             0.0s
+ => => transferring context: 11.03kB                                                                                          0.0s
+ => [1/8] FROM docker.io/tiangolo/uvicorn-gunicorn-fastapi:python3.7@sha256:47dc04578b9c523b9d2407c9fc6063468fa6b5512b3e1838  0.0s
+ => CACHED [2/8] RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl ca-certificates &&     curl -f  0.0s
+ => CACHED [3/8] RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf &&     echo "/usr/local/nvidia/lib64" >>   0.0s
+ => [4/8] COPY ./requirements.txt /app/requirements.txt                                                                       0.0s
+ => ERROR [5/8] RUN pip install -r /app/requirements.txt                                                                      5.6s
+------                                                                                                                             
+ > [5/8] RUN pip install -r /app/requirements.txt:                                                                                 
+1.962 Collecting transformers                                                                                                      
+2.063   Downloading transformers-4.30.2-py3-none-any.whl (7.2 MB)                                                                  
+2.525      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 15.8 MB/s eta 0:00:00                                               
+3.438 Collecting safetensors                                                                                                       
+3.456   Downloading safetensors-0.4.4-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (436 kB)
+3.476      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 436.4/436.4 kB 33.4 MB/s eta 0:00:00
+3.484 Requirement already satisfied: fastapi in /usr/local/lib/python3.7/site-packages (from -r /app/requirements.txt (line 3)) (0.88.0)
+3.485 Requirement already satisfied: uvicorn in /usr/local/lib/python3.7/site-packages (from -r /app/requirements.txt (line 4)) (0.20.0)
+3.562 Collecting accelerate
+3.578   Downloading accelerate-0.20.3-py3-none-any.whl (227 kB)
+3.593      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 227.6/227.6 kB 31.3 MB/s eta 0:00:00
+3.600 Requirement already satisfied: pydantic in /usr/local/lib/python3.7/site-packages (from -r /app/requirements.txt (line 6)) (1.10.17)
+3.639 Collecting pytesseract
+3.655   Downloading pytesseract-0.3.10-py3-none-any.whl (14 kB)
+4.892 Collecting pillow
+4.910   Downloading Pillow-9.5.0-cp37-cp37m-manylinux_2_28_x86_64.whl (3.4 MB)
+5.005      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 39.2 MB/s eta 0:00:00
+5.104 ERROR: Ignored the following versions that require a different python version: 0.21.0 Requires-Python >=3.8.0; 0.22.0 Requires-Python >=3.8.0; 0.23.0 Requires-Python >=3.8.0; 0.24.0 Requires-Python >=3.8.0; 0.24.1 Requires-Python >=3.8.0; 0.25.0 Requires-Python >=3.8.0; 0.26.0 Requires-Python >=3.8.0; 0.26.1 Requires-Python >=3.8.0; 0.27.0 Requires-Python >=3.8.0; 0.27.1 Requires-Python >=3.8.0; 0.27.2 Requires-Python >=3.8.0; 0.28.0 Requires-Python >=3.8.0; 0.29.0 Requires-Python >=3.8.0; 0.29.1 Requires-Python >=3.8.0; 0.29.2 Requires-Python >=3.8.0; 0.29.3 Requires-Python >=3.8.0; 0.30.0 Requires-Python >=3.8.0; 0.30.0rc0 Requires-Python >=3.8.0; 0.30.1 Requires-Python >=3.8.0; 0.31.0 Requires-Python >=3.8.0; 0.32.0 Requires-Python >=3.8.0; 0.32.1 Requires-Python >=3.8.0; 0.33.0 Requires-Python >=3.8.0; 10.0.0 Requires-Python >=3.8; 10.0.1 Requires-Python >=3.8; 10.1.0 Requires-Python >=3.8; 10.2.0 Requires-Python >=3.8; 10.3.0 Requires-Python >=3.8; 10.4.0 Requires-Python >=3.8; 4.31.0 Requires-Python >=3.8.0; 4.32.0 Requires-Python >=3.8.0; 4.32.1 Requires-Python >=3.8.0; 4.33.0 Requires-Python >=3.8.0; 4.33.1 Requires-Python >=3.8.0; 4.33.2 Requires-Python >=3.8.0; 4.33.3 Requires-Python >=3.8.0; 4.34.0 Requires-Python >=3.8.0; 4.34.1 Requires-Python >=3.8.0; 4.35.0 Requires-Python >=3.8.0; 4.35.1 Requires-Python >=3.8.0; 4.35.2 Requires-Python >=3.8.0; 4.36.0 Requires-Python >=3.8.0; 4.36.1 Requires-Python >=3.8.0; 4.36.2 Requires-Python >=3.8.0; 4.37.0 Requires-Python >=3.8.0; 4.37.1 Requires-Python >=3.8.0; 4.37.2 Requires-Python >=3.8.0; 4.38.0 Requires-Python >=3.8.0; 4.38.1 Requires-Python >=3.8.0; 4.38.2 Requires-Python >=3.8.0; 4.39.0 Requires-Python >=3.8.0; 4.39.1 Requires-Python >=3.8.0; 4.39.2 Requires-Python >=3.8.0; 4.39.3 Requires-Python >=3.8.0; 4.40.0 Requires-Python >=3.8.0; 4.40.1 Requires-Python >=3.8.0; 4.40.2 Requires-Python >=3.8.0; 4.41.0 Requires-Python >=3.8.0; 4.41.1 Requires-Python >=3.8.0; 4.41.2 Requires-Python >=3.8.0; 4.42.0 Requires-Python >=3.8.0; 4.42.1 Requires-Python >=3.8.0; 4.42.2 Requires-Python >=3.8.0; 4.42.3 Requires-Python >=3.8.0; 4.42.4 Requires-Python >=3.8.0; 4.43.0 Requires-Python >=3.8.0; 4.43.1 Requires-Python >=3.8.0; 4.43.2 Requires-Python >=3.8.0; 4.43.3 Requires-Python >=3.8.0; 4.43.4 Requires-Python >=3.8.0; 4.44.0 Requires-Python >=3.8.0
+5.104 ERROR: Could not find a version that satisfies the requirement os (from versions: none)
+5.105 ERROR: No matching distribution found for os
+5.397 
+5.397 [notice] A new release of pip is available: 23.0.1 -> 24.0
+5.397 [notice] To update, run: pip install --upgrade pip
+------
+Dockerfile:36
+--------------------
+  34 |     COPY ./requirements.txt /app/requirements.txt
+  35 |     
+  36 | >>> RUN pip install -r /app/requirements.txt
+  37 |     
+  38 |     #RUN pip install --upgrade vllm
+--------------------
+ERROR: failed to solve: process "/bin/sh -c pip install -r /app/requirements.txt" did not complete successfully: exit code: 1
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# cat Dockerfile 
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+gnupg2 curl ca-certificates && \
+    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
+    apt-get purge --autoremove -y curl && \
+rm -rf /var/lib/apt/lists/*
+
+ENV CUDA_VERSION 10.2.89
+
+ENV CUDA_PKG_VERSION 10-2=$CUDA_VERSION-1
+
+# For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#         cuda-cudart-$CUDA_PKG_VERSION \
+# cuda-compat-10-2 && \
+# ln -s cuda-10.2 /usr/local/cuda && \
+#     rm -rf /var/lib/apt/lists/*
+
+# Required for nvidia-docker v1
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+
+ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV NVIDIA_REQUIRE_CUDA "cuda>=10.2 brand=tesla,driver>=384,driver<385 brand=tesla,driver>=396,driver<397 brand=tesla,driver>=410,driver<411 brand=tesla,driver>=418,driver<419"
+
+COPY ./requirements.txt /app/requirements.txt
+
+RUN pip install -r /app/requirements.txt
+
+#RUN pip install --upgrade vllm
+
+
+RUN apt-get update \
+    && apt-get install -y tesseract-ocr-all
+
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+
+COPY . /app
+
+
+
+
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# 
+
