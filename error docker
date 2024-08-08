@@ -1,0 +1,95 @@
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# docker build -t cio/irisellm:0.1 .
+[+] Building 4.0s (10/12)                                                                                           docker:default
+ => [internal] load build definition from Dockerfile                                                                          0.0s
+ => => transferring dockerfile: 1.93kB                                                                                        0.0s
+ => [internal] load metadata for docker.io/tiangolo/uvicorn-gunicorn-fastapi:python3.10                                       0.5s
+ => [internal] load .dockerignore                                                                                             0.0s
+ => => transferring context: 2B                                                                                               0.0s
+ => [internal] load build context                                                                                             0.0s
+ => => transferring context: 12.81kB                                                                                          0.0s
+ => [1/8] FROM docker.io/tiangolo/uvicorn-gunicorn-fastapi:python3.10@sha256:e04a19cde8944872d4d523ba838fbca61ba0dd5e7fda4e3  0.0s
+ => CACHED [2/8] RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl ca-certificates &&     curl -f  0.0s
+ => CACHED [3/8] RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf &&     echo "/usr/local/nvidia/lib64" >>   0.0s
+ => CACHED [4/8] COPY ./requirements.txt /app/requirements.txt                                                                0.0s
+ => CACHED [5/8] RUN pip install -r /app/requirements.txt                                                                     0.0s
+ => ERROR [6/8] RUN apt-get update && apt-get install -y tesseract-ocr-all                                                    3.4s
+------                                                                                                                             
+ > [6/8] RUN apt-get update && apt-get install -y tesseract-ocr-all:                                                               
+0.346 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]                                                               
+0.383 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]                                                      
+0.397 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]                                            
+0.529 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8788 kB]                                                    
+0.815 Get:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease [1581 B]
+0.828 Get:6 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [13.8 kB]
+0.831 Get:7 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [169 kB]
+1.084 Err:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease
+1.084   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY A4B469963BF863CC
+1.147 Ign:8 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease
+1.259 Get:9 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release [564 B]
+1.375 Get:10 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release.gpg [833 B]
+1.751 Get:11 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Packages [73.8 kB]
+2.617 Reading package lists...
+3.341 W: GPG error: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY A4B469963BF863CC
+3.341 E: The repository 'https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease' is not signed.
+3.341 W: https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+------
+Dockerfile:40
+--------------------
+  38 |     #RUN pip install --upgrade vllm
+  39 |     
+  40 | >>> RUN apt-get update && apt-get install -y tesseract-ocr-all
+  41 |     
+  42 |     RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+--------------------
+ERROR: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y tesseract-ocr-all" did not complete successfully: exit code: 100
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# cat Dockerfile 
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+gnupg2 curl ca-certificates && \
+    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
+    apt-get purge --autoremove -y curl && \
+rm -rf /var/lib/apt/lists/*
+
+ENV CUDA_VERSION 10.2.89
+
+ENV CUDA_PKG_VERSION 10-2=$CUDA_VERSION-1
+
+# For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#         cuda-cudart-$CUDA_PKG_VERSION \
+# cuda-compat-10-2 && \
+# ln -s cuda-10.2 /usr/local/cuda && \
+#     rm -rf /var/lib/apt/lists/*
+
+# Required for nvidia-docker v1
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+
+ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV NVIDIA_REQUIRE_CUDA "cuda>=10.2 brand=tesla,driver>=384,driver<385 brand=tesla,driver>=396,driver<397 brand=tesla,driver>=410,driver<411 brand=tesla,driver>=418,driver<419"
+
+COPY ./requirements.txt /app/requirements.txt
+
+RUN pip install -r /app/requirements.txt
+
+#RUN pip install --upgrade vllm
+
+RUN apt-get update && apt-get install -y tesseract-ocr-all
+
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+
+COPY . /app
+
+
+
+
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# 
+
