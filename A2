@@ -1,0 +1,33 @@
+# Use the official NVIDIA CUDA base image with Python 3.10
+FROM nvidia/cuda:12.2.0-base-ubuntu20.04
+
+# Install required packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnupg2 curl ca-certificates lsb-release \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install additional libraries and dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libcudnn8 \
+    libcudnn8-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set environment variables for CUDA
+ENV CUDA_VERSION 12.2
+ENV PATH /usr/local/cuda-${CUDA_VERSION}/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/cuda-${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}
+
+# Use the Uvicorn-Gunicorn-FastAPI image for the application
+RUN pip install --no-cache-dir -U pip && \
+    pip install --no-cache-dir uvicorn gunicorn fastapi
+
+# Install your Python dependencies here
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your application code
+COPY . /app
+WORKDIR /app
+
+# Run the application
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
