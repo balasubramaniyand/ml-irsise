@@ -184,103 +184,55 @@ irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vll
 irise_llama-irise_llama-1  |     from vllm.config import (CacheConfig, ModelConfig, ParallelConfig,
 irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/config.py", line 9, in <module>
 irise_llama-irise_llama-1  |     from vllm.utils import get_cpu_memory, is_hip
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/utils.py", line 11, in <module>
-irise_llama-irise_llama-1  |     from vllm._C import cuda_utils
-irise_llama-irise_llama-1  | ImportError: libcudart.so.12: cannot open shared object file: No such file or directory
-irise_llama-irise_llama-1  | Traceback (most recent call last):
-irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
-irise_llama-irise_llama-1  |     sys.exit(main())
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
-irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
-irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
-irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
-irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
-irise_llama-irise_llama-1  |     run(
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
-irise_llama-irise_llama-1  |     server.run()
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
-irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
-irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
-irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
-irise_llama-irise_llama-1  |     config.load()
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
-irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 24, in import_from_string
-irise_llama-irise_llama-1  |     raise exc from None
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
-irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
-irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-irise_llama-irise_llama-1  |   File "/app/./app.py", line 2, in <module>
-irise_llama-irise_llama-1  |     from vllm import LLM
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/__init__.py", line 3, in <module>
-irise_llama-irise_llama-1  |     from vllm.engine.arg_utils import AsyncEngineArgs, EngineArgs
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/engine/arg_utils.py", line 6, in <module>
-irise_llama-irise_llama-1  |     from vllm.config import (CacheConfig, ModelConfig, ParallelConfig,
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/config.py", line 9, in <module>
-irise_llama-irise_llama-1  |     from vllm.utils import get_cpu_memory, is_hip
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/utils.py", line 11, in <module>
-irise_llama-irise_llama-1  |     from vllm._C import cuda_utils
-irise_llama-irise_llama-1  | ImportError: libcudart.so.12: cannot open shared object file: No such file or directory
-irise_llama-irise_llama-1  | Traceback (most recent call last):
-irise_llama-irise_llama-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
-irise_llama-irise_llama-1  |     sys.exit(main())
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
-irise_llama-irise_llama-1  |     return self.main(*args, **kwargs)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
-irise_llama-irise_llama-1  |     rv = self.invoke(ctx)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
-irise_llama-irise_llama-1  |     return ctx.invoke(self.callback, **ctx.params)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
-irise_llama-irise_llama-1  |     return __callback(*args, **kwargs)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
-irise_llama-irise_llama-1  |     run(
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
-irise_llama-irise_llama-1  |     server.run()
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
-irise_llama-irise_llama-1  |     return asyncio.run(self.serve(sockets=sockets))
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
-irise_llama-irise_llama-1  |     return loop.run_until_complete(main)
-irise_llama-irise_llama-1  |   File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
-irise_llama-irise_llama-1  |     config.load()
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
-irise_llama-irise_llama-1  |     self.loaded_app = import_from_string(self.app)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 24, in import_from_string
-irise_llama-irise_llama-1  |     raise exc from None
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
-irise_llama-irise_llama-1  |     module = importlib.import_module(module_str)
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
-irise_llama-irise_llama-1  |     return _bootstrap._gcd_import(name[level:], package, level)
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-irise_llama-irise_llama-1  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-irise_llama-irise_llama-1  |   File "/app/./app.py", line 2, in <module>
-irise_llama-irise_llama-1  |     from vllm import LLM
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/__init__.py", line 3, in <module>
-irise_llama-irise_llama-1  |     from vllm.engine.arg_utils import AsyncEngineArgs, EngineArgs
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/engine/arg_utils.py", line 6, in <module>
-irise_llama-irise_llama-1  |     from vllm.config import (CacheConfig, ModelConfig, ParallelConfig,
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/config.py", line 9, in <module>
-irise_llama-irise_llama-1  |     from vllm.utils import get_cpu_memory, is_hip
-irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.10/site-packages/vllm/utils.py", line 11, in <module>
-irise_llama-irise_llama-1  |     from vllm._C import cuda_utils
-irise_llama-irise_llama-1  | ImportError: libcudart.so.12: cannot open shared object file: No such file or directory
-irise_llama-irise_llama-1 exited with code 1
 
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# cat Dockerfile 
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+gnupg2 curl ca-certificates && \
+    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
+    apt-get purge --autoremove -y curl && \
+rm -rf /var/lib/apt/lists/*
+
+ENV CUDA_VERSION 10.2.89
+
+ENV CUDA_PKG_VERSION 10-2=$CUDA_VERSION-1
+
+# For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#         cuda-cudart-$CUDA_PKG_VERSION \
+# cuda-compat-10-2 && \
+# ln -s cuda-10.2 /usr/local/cuda && \
+#     rm -rf /var/lib/apt/lists/*
+
+# Required for nvidia-docker v1
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+
+ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV NVIDIA_REQUIRE_CUDA "cuda>=10.2 brand=tesla,driver>=384,driver<385 brand=tesla,driver>=396,driver<397 brand=tesla,driver>=410,driver<411 brand=tesla,driver>=418,driver<419"
+
+COPY ./requirements.txt /app/requirements.txt
+
+RUN pip install -r /app/requirements.txt
+
+#RUN pip install --upgrade vllm
+
+#RUN apt-get update && apt-get install -y tesseract-ocr-all
+
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+
+COPY . /app
+
+
+
+
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# 
 
