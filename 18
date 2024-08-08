@@ -1,0 +1,321 @@
+Attaching to irise_llama-irise_llama-1
+irise_llama-irise_llama-1  | The model weights are not tied. Please use the `tie_weights` method before using the `infer_auto_device` function.
+Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.14it/s]
+irise_llama-irise_llama-1  | Some weights of LlamaForCausalLM were not initialized from the model checkpoint at model and are newly initialized: ['model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq']
+irise_llama-irise_llama-1  | You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+irise_llama-irise_llama-1  | Xformers is not installed correctly. If you want to use memory_efficient_attention to accelerate training use the following command to install Xformers
+irise_llama-irise_llama-1  | pip install xformers.
+irise_llama-irise_llama-1  | Pipeline created
+irise_llama-irise_llama-1  | INFO:     Started server process [1]
+irise_llama-irise_llama-1  | INFO:     Waiting for application startup.
+irise_llama-irise_llama-1  | INFO:     Application startup complete.
+irise_llama-irise_llama-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+^CGracefully stopping... (press Ctrl+C again to force)
+[+] Running 1/1
+ ⠿ Container irise_llama-irise_llama-1  Stopped                                                                               1.4s
+
+
+^Z
+[1]+  Stopped                 docker-compose up
+root@opexwise-ml2:/home/bala.d/irise_llama# vi docker-compose.yml 
+root@opexwise-ml2:/home/bala.d/irise_llama# docker-compose down
+[+] Running 2/2
+ ⠿ Container irise_llama-irise_llama-1  Removed                                                                               0.0s
+ ⠿ Network irise_llama_default          Removed                                                                               0.2s
+root@opexwise-ml2:/home/bala.d/irise_llama# docker-compose up -d
+[+] Running 1/2
+ ⠿ Network irise_llama_default          Created                                                                               0.2s
+ ⠿ Container irise_llama-irise_llama-1  Starting                                                                              0.2s
+Error response from daemon: driver failed programming external connectivity on endpoint irise_llama-irise_llama-1 (2e7a6385c4cd432ef65c04309b4613205ef6329acfef3c76eac0cd8ae94e16eb): Bind for 0.0.0.0:8000 failed: port is already allocated
+root@opexwise-ml2:/home/bala.d/irise_llama# vi docker-compose.yml 
+root@opexwise-ml2:/home/bala.d/irise_llama# docker-compose down
+[+] Running 2/2
+ ⠿ Container irise_llama-irise_llama-1  Removed                                                                               0.0s
+ ⠿ Network irise_llama_default          Removed                                                                               0.2s
+root@opexwise-ml2:/home/bala.d/irise_llama# docker-compose up -d
+[+] Running 2/2
+ ⠿ Network irise_llama_default          Created                                                                               0.1s
+ ⠿ Container irise_llama-irise_llama-1  Started                                                                               0.7s
+root@opexwise-ml2:/home/bala.d/irise_llama# docker-compose ps
+NAME                        COMMAND                  SERVICE             STATUS              PORTS
+irise_llama-irise_llama-1   "uvicorn app:app --h…"   irise_llama         running             0.0.0.0:8070->8000/tcp, :::8070->8000/tcp
+root@opexwise-ml2:/home/bala.d/irise_llama# telnet localhost 8070
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+^CConnection closed by foreign host.
+root@opexwise-ml2:/home/bala.d/irise_llama# 
+root@opexwise-ml2:/home/bala.d/irise_llama# docker-compose logs -f
+irise_llama-irise_llama-1  | The model weights are not tied. Please use the `tie_weights` method before using the `infer_auto_device` function.
+Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.07s/it]
+irise_llama-irise_llama-1  | Some weights of LlamaForCausalLM were not initialized from the model checkpoint at model and are newly initialized: ['model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq']
+irise_llama-irise_llama-1  | You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+irise_llama-irise_llama-1  | Xformers is not installed correctly. If you want to use memory_efficient_attention to accelerate training use the following command to install Xformers
+irise_llama-irise_llama-1  | pip install xformers.
+irise_llama-irise_llama-1  | Pipeline created
+irise_llama-irise_llama-1  | INFO:     Started server process [1]
+irise_llama-irise_llama-1  | INFO:     Waiting for application startup.
+irise_llama-irise_llama-1  | INFO:     Application startup complete.
+irise_llama-irise_llama-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+irise_llama-irise_llama-1  | INFO:     10.20.9.10:60665 - "GET / HTTP/1.1" 404 Not Found
+irise_llama-irise_llama-1  | INFO:     10.20.9.10:60665 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+irise_llama-irise_llama-1  | INFO:     10.20.9.10:60666 - "GET /llama3-8B-irise HTTP/1.1" 405 Method Not Allowed
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:39384 - "GET / HTTP/1.1" 404 Not Found
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:39384 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+irise_llama-irise_llama-1  | INFO:     10.20.125.95:48108 - "GET / HTTP/1.1" 404 Not Found
+irise_llama-irise_llama-1  | INFO:     10.20.125.95:48108 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+irise_llama-irise_llama-1  | INFO:     10.20.125.95:34060 - "GET /docs HTTP/1.1" 200 OK
+irise_llama-irise_llama-1  | INFO:     10.20.125.95:34060 - "GET /openapi.json HTTP/1.1" 200 OK
+irise_llama-irise_llama-1  | INFO:     10.20.125.95:49532 - "POST /llama3-8B-chatbot HTTP/1.1" 500 Internal Server Error
+irise_llama-irise_llama-1  | ERROR:    Exception in ASGI application
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/protocols/http/httptools_impl.py", line 420, in run_asgi
+irise_llama-irise_llama-1  |     self.scope, self.receive, self.send
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+irise_llama-irise_llama-1  |     return await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/applications.py", line 270, in __call__
+irise_llama-irise_llama-1  |     await super().__call__(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/applications.py", line 124, in __call__
+irise_llama-irise_llama-1  |     await self.middleware_stack(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/errors.py", line 184, in __call__
+irise_llama-irise_llama-1  |     raise exc
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/errors.py", line 162, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, _send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/cors.py", line 92, in __call__
+irise_llama-irise_llama-1  |     await self.simple_response(scope, receive, send, request_headers=headers)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/cors.py", line 147, in simple_response
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+irise_llama-irise_llama-1  |     raise exc
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, sender)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+irise_llama-irise_llama-1  |     raise e
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 706, in __call__
+irise_llama-irise_llama-1  |     await route.handle(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 276, in handle
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 66, in app
+irise_llama-irise_llama-1  |     response = await func(request)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/routing.py", line 262, in app
+irise_llama-irise_llama-1  |     is_coroutine=is_coroutine,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/routing.py", line 150, in serialize_response
+irise_llama-irise_llama-1  |     return jsonable_encoder(response_content)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/encoders.py", line 129, in jsonable_encoder
+irise_llama-irise_llama-1  |     for item in obj:
+irise_llama-irise_llama-1  |   File "./app.py", line 65, in read_root_chatbot
+irise_llama-irise_llama-1  |     max_new_tokens=4096
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/text_generation.py", line 201, in __call__
+irise_llama-irise_llama-1  |     return super().__call__(text_inputs, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1120, in __call__
+irise_llama-irise_llama-1  |     return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1127, in run_single
+irise_llama-irise_llama-1  |     model_outputs = self.forward(model_inputs, **forward_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1026, in forward
+irise_llama-irise_llama-1  |     model_outputs = self._forward(model_inputs, **forward_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/text_generation.py", line 263, in _forward
+irise_llama-irise_llama-1  |     generated_sequence = self.model.generate(input_ids=input_ids, attention_mask=attention_mask, **generate_kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+irise_llama-irise_llama-1  |     return func(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/generation/utils.py", line 1532, in generate
+irise_llama-irise_llama-1  |     **model_kwargs,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/generation/utils.py", line 2343, in greedy_search
+irise_llama-irise_llama-1  |     output_hidden_states=output_hidden_states,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 697, in forward
+irise_llama-irise_llama-1  |     return_dict=return_dict,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 584, in forward
+irise_llama-irise_llama-1  |     use_cache=use_cache,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 298, in forward
+irise_llama-irise_llama-1  |     use_cache=use_cache,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 195, in forward
+irise_llama-irise_llama-1  |     key_states = self.k_proj(hidden_states).view(bsz, q_len, self.num_heads, self.head_dim).transpose(1, 2)
+irise_llama-irise_llama-1  | RuntimeError: shape '[1, 120, 32, 128]' is invalid for input of size 122880
+irise_llama-irise_llama-1  | WARNING:  Invalid HTTP request received.
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:52682 - "GET /docs HTTP/1.1" 200 OK
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:52682 - "GET /openapi.json HTTP/1.1" 200 OK
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:52698 - "POST /llama3-8B-irise HTTP/1.1" 500 Internal Server Error
+irise_llama-irise_llama-1  | ERROR:    Exception in ASGI application
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/protocols/http/httptools_impl.py", line 420, in run_asgi
+irise_llama-irise_llama-1  |     self.scope, self.receive, self.send
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+irise_llama-irise_llama-1  |     return await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/applications.py", line 270, in __call__
+irise_llama-irise_llama-1  |     await super().__call__(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/applications.py", line 124, in __call__
+irise_llama-irise_llama-1  |     await self.middleware_stack(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/errors.py", line 184, in __call__
+irise_llama-irise_llama-1  |     raise exc
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/errors.py", line 162, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, _send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/cors.py", line 92, in __call__
+irise_llama-irise_llama-1  |     await self.simple_response(scope, receive, send, request_headers=headers)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/cors.py", line 147, in simple_response
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+irise_llama-irise_llama-1  |     raise exc
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, sender)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+irise_llama-irise_llama-1  |     raise e
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 706, in __call__
+irise_llama-irise_llama-1  |     await route.handle(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 276, in handle
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 66, in app
+irise_llama-irise_llama-1  |     response = await func(request)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/routing.py", line 262, in app
+irise_llama-irise_llama-1  |     is_coroutine=is_coroutine,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/routing.py", line 150, in serialize_response
+irise_llama-irise_llama-1  |     return jsonable_encoder(response_content)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/encoders.py", line 129, in jsonable_encoder
+irise_llama-irise_llama-1  |     for item in obj:
+irise_llama-irise_llama-1  |   File "./app.py", line 50, in read_root
+irise_llama-irise_llama-1  |     max_new_tokens=256
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/text_generation.py", line 201, in __call__
+irise_llama-irise_llama-1  |     return super().__call__(text_inputs, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1120, in __call__
+irise_llama-irise_llama-1  |     return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1127, in run_single
+irise_llama-irise_llama-1  |     model_outputs = self.forward(model_inputs, **forward_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1026, in forward
+irise_llama-irise_llama-1  |     model_outputs = self._forward(model_inputs, **forward_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/text_generation.py", line 263, in _forward
+irise_llama-irise_llama-1  |     generated_sequence = self.model.generate(input_ids=input_ids, attention_mask=attention_mask, **generate_kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+irise_llama-irise_llama-1  |     return func(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/generation/utils.py", line 1532, in generate
+irise_llama-irise_llama-1  |     **model_kwargs,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/generation/utils.py", line 2343, in greedy_search
+irise_llama-irise_llama-1  |     output_hidden_states=output_hidden_states,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 697, in forward
+irise_llama-irise_llama-1  |     return_dict=return_dict,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 584, in forward
+irise_llama-irise_llama-1  |     use_cache=use_cache,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 298, in forward
+irise_llama-irise_llama-1  |     use_cache=use_cache,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 195, in forward
+irise_llama-irise_llama-1  |     key_states = self.k_proj(hidden_states).view(bsz, q_len, self.num_heads, self.head_dim).transpose(1, 2)
+irise_llama-irise_llama-1  | RuntimeError: shape '[1, 34, 32, 128]' is invalid for input of size 34816
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:38496 - "POST /llama3-8B-irise HTTP/1.1" 500 Internal Server Error
+irise_llama-irise_llama-1  | ERROR:    Exception in ASGI application
+irise_llama-irise_llama-1  | Traceback (most recent call last):
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/protocols/http/httptools_impl.py", line 420, in run_asgi
+irise_llama-irise_llama-1  |     self.scope, self.receive, self.send
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+irise_llama-irise_llama-1  |     return await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/applications.py", line 270, in __call__
+irise_llama-irise_llama-1  |     await super().__call__(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/applications.py", line 124, in __call__
+irise_llama-irise_llama-1  |     await self.middleware_stack(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/errors.py", line 184, in __call__
+irise_llama-irise_llama-1  |     raise exc
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/errors.py", line 162, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, _send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/cors.py", line 92, in __call__
+irise_llama-irise_llama-1  |     await self.simple_response(scope, receive, send, request_headers=headers)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/cors.py", line 147, in simple_response
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+irise_llama-irise_llama-1  |     raise exc
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, sender)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+irise_llama-irise_llama-1  |     raise e
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 706, in __call__
+irise_llama-irise_llama-1  |     await route.handle(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 276, in handle
+irise_llama-irise_llama-1  |     await self.app(scope, receive, send)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/starlette/routing.py", line 66, in app
+irise_llama-irise_llama-1  |     response = await func(request)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/routing.py", line 262, in app
+irise_llama-irise_llama-1  |     is_coroutine=is_coroutine,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/routing.py", line 150, in serialize_response
+irise_llama-irise_llama-1  |     return jsonable_encoder(response_content)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/fastapi/encoders.py", line 129, in jsonable_encoder
+irise_llama-irise_llama-1  |     for item in obj:
+irise_llama-irise_llama-1  |   File "./app.py", line 50, in read_root
+irise_llama-irise_llama-1  |     max_new_tokens=256
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/text_generation.py", line 201, in __call__
+irise_llama-irise_llama-1  |     return super().__call__(text_inputs, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1120, in __call__
+irise_llama-irise_llama-1  |     return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1127, in run_single
+irise_llama-irise_llama-1  |     model_outputs = self.forward(model_inputs, **forward_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/base.py", line 1026, in forward
+irise_llama-irise_llama-1  |     model_outputs = self._forward(model_inputs, **forward_params)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/pipelines/text_generation.py", line 263, in _forward
+irise_llama-irise_llama-1  |     generated_sequence = self.model.generate(input_ids=input_ids, attention_mask=attention_mask, **generate_kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+irise_llama-irise_llama-1  |     return func(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/generation/utils.py", line 1532, in generate
+irise_llama-irise_llama-1  |     **model_kwargs,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/generation/utils.py", line 2343, in greedy_search
+irise_llama-irise_llama-1  |     output_hidden_states=output_hidden_states,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 697, in forward
+irise_llama-irise_llama-1  |     return_dict=return_dict,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 584, in forward
+irise_llama-irise_llama-1  |     use_cache=use_cache,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 298, in forward
+irise_llama-irise_llama-1  |     use_cache=use_cache,
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+irise_llama-irise_llama-1  |     return forward_call(*input, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/accelerate/hooks.py", line 165, in new_forward
+irise_llama-irise_llama-1  |     output = old_forward(*args, **kwargs)
+irise_llama-irise_llama-1  |   File "/usr/local/lib/python3.7/site-packages/transformers/models/llama/modeling_llama.py", line 195, in forward
+irise_llama-irise_llama-1  |     key_states = self.k_proj(hidden_states).view(bsz, q_len, self.num_heads, self.head_dim).transpose(1, 2)
+irise_llama-irise_llama-1  | RuntimeError: shape '[1, 34, 32, 128]' is invalid for input of size 34816
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:59224 - "GET /docs HTTP/1.1" 200 OK
+irise_llama-irise_llama-1  | INFO:     10.20.125.101:59224 - "GET /openapi.json HTTP/1.1" 200 OK
+
+
