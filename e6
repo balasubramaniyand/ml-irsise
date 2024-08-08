@@ -1,0 +1,111 @@
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# docker build -t cio/irisellm:0.3 .
+[+] Building 9.3s (6/10)                                                                                            docker:default
+ => [internal] load build definition from Dockerfile                                                                          0.0s
+ => => transferring dockerfile: 1.50kB                                                                                        0.0s
+ => [internal] load metadata for docker.io/tiangolo/uvicorn-gunicorn-fastapi:python3.10                                       0.5s
+ => [internal] load .dockerignore                                                                                             0.0s
+ => => transferring context: 2B                                                                                               0.0s
+ => [internal] load build context                                                                                             0.0s
+ => => transferring context: 10.97kB                                                                                          0.0s
+ => CACHED [1/6] FROM docker.io/tiangolo/uvicorn-gunicorn-fastapi:python3.10@sha256:e04a19cde8944872d4d523ba838fbca61ba0dd5e  0.0s
+ => ERROR [2/6] RUN apt-get update && apt-get install -y --no-install-recommends     gnupg2 curl ca-certificates &&     curl  8.8s
+------                                                                                                                             
+ > [2/6] RUN apt-get update && apt-get install -y --no-install-recommends     gnupg2 curl ca-certificates &&     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - &&     echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list &&     echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list &&     apt-get update && apt-get install -y --no-install-recommends     cuda-toolkit-12-2     libcudnn8=8.6.0.163-1+cuda12.2     libcudnn8-dev=8.6.0.163-1+cuda12.2     &&     apt-get clean && rm -rf /var/lib/apt/lists/*:
+0.313 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+0.345 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+0.355 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+0.480 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8788 kB]
+0.701 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [13.8 kB]
+0.713 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [169 kB]
+2.481 Fetched 9225 kB in 2s (4187 kB/s)
+2.481 Reading package lists...
+3.210 Reading package lists...
+3.881 Building dependency tree...
+3.994 Reading state information...
+4.161 curl is already the newest version (7.88.1-10+deb12u6).
+4.161 ca-certificates is already the newest version (20230311).
+4.161 The following NEW packages will be installed:
+4.161   gnupg2
+4.205 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+4.205 Need to get 445 kB of archives.
+4.205 After this operation, 464 kB of additional disk space will be used.
+4.205 Get:1 http://deb.debian.org/debian bookworm/main amd64 gnupg2 all 2.2.40-1.1 [445 kB]
+4.424 debconf: delaying package configuration, since apt-utils is not installed
+4.465 Fetched 445 kB in 0s (6164 kB/s)
+4.493 Selecting previously unselected package gnupg2.
+(Reading database ... 23958 files and directories currently installed.)
+4.515 Preparing to unpack .../gnupg2_2.2.40-1.1_all.deb ...
+4.516 Unpacking gnupg2 (2.2.40-1.1) ...
+4.573 Setting up gnupg2 (2.2.40-1.1) ...
+4.702 Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+5.985 OK
+6.092 Hit:1 http://deb.debian.org/debian bookworm InRelease
+6.092 Hit:2 http://deb.debian.org/debian bookworm-updates InRelease
+6.102 Hit:3 http://deb.debian.org/debian-security bookworm-security InRelease
+6.574 Get:4 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease [1581 B]
+6.827 Err:4 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease
+6.827   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY A4B469963BF863CC
+6.905 Ign:5 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease
+7.020 Get:6 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release [564 B]
+7.135 Get:7 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release.gpg [833 B]
+7.504 Get:8 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Packages [73.8 kB]
+7.647 Reading package lists...
+8.745 W: GPG error: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY A4B469963BF863CC
+8.745 E: The repository 'https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease' is not signed.
+8.745 W: https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+------
+Dockerfile:5
+--------------------
+   4 |     # Install required packages and NVIDIA CUDA repositories
+   5 | >>> RUN apt-get update && apt-get install -y --no-install-recommends \
+   6 | >>>     gnupg2 curl ca-certificates && \
+   7 | >>>     # Add NVIDIA package repositories for CUDA
+   8 | >>>     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
+   9 | >>>     echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+  10 | >>>     echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
+  11 | >>>     # Install CUDA 12 and dependencies
+  12 | >>>     apt-get update && apt-get install -y --no-install-recommends \
+  13 | >>>     cuda-toolkit-12-2 \
+  14 | >>>     libcudnn8=8.6.0.163-1+cuda12.2 \
+  15 | >>>     libcudnn8-dev=8.6.0.163-1+cuda12.2 \
+  16 | >>>     && \
+  17 | >>>     apt-get clean && rm -rf /var/lib/apt/lists/*
+  18 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     gnupg2 curl ca-certificates &&     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - &&     echo \"deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /\" > /etc/apt/sources.list.d/cuda.list &&     echo \"deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /\" > /etc/apt/sources.list.d/nvidia-ml.list &&     apt-get update && apt-get install -y --no-install-recommends     cuda-toolkit-12-2     libcudnn8=8.6.0.163-1+cuda12.2     libcudnn8-dev=8.6.0.163-1+cuda12.2     &&     apt-get clean && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# cat Dockerfile 
+# Use the official Uvicorn-Gunicorn-FastAPI base image with Python 3.10
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
+
+# Install required packages and NVIDIA CUDA repositories
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnupg2 curl ca-certificates && \
+    # Add NVIDIA package repositories for CUDA
+    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
+    # Install CUDA 12 and dependencies
+    apt-get update && apt-get install -y --no-install-recommends \
+    cuda-toolkit-12-2 \
+    libcudnn8=8.6.0.163-1+cuda12.2 \
+    libcudnn8-dev=8.6.0.163-1+cuda12.2 \
+    && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set environment variables for CUDA
+ENV CUDA_VERSION 12.2
+ENV PATH /usr/local/cuda-${CUDA_VERSION}/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/cuda-${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}
+
+# Install your Python dependencies here
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your application code
+COPY . /app
+WORKDIR /app
+
+# Run the application
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+root@opexwise-ml2:/home/bala.d/llm/irise_llama# 
+
