@@ -1,2 +1,33 @@
-oot@opexwise-ml2:~/LocalAI# docker run -tid --name cioirise:0.1 -p 8080:8080 --gpus "device=1" localai/localai:latest-aio-gpu-nvidia-cuda-12
+root@opexwise-ml2:~/LocalAI# docker run -tid --name cioirise -p 8070:8080 --gpus "device=1" --runtime=nvidia cioiopex/irise:0.0
+docker: Error response from daemon: Conflict. The container name "/cioirise" is already in use by container "e2c0f2a33df8c7912853cf086944992c040eefabde0c4585344200e0202d3aa6". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+root@opexwise-ml2:~/LocalAI# nvidia-smi
+Mon Aug 12 16:49:06 2024       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla P40                      Off | 00000000:04:00.0 Off |                    0 |
+| N/A   37C    P0              50W / 250W |  16332MiB / 23040MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  Tesla P40                      Off | 00000000:82:00.0 Off |                    0 |
+| N/A   28C    P8              10W / 250W |      2MiB / 23040MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A      3077      C   python                                      834MiB |
+|    0   N/A  N/A      3081      C   /usr/local/bin/python                     15496MiB |
++---------------------------------------------------------------------------------------+
+root@opexwise-ml2:~/LocalAI# 
+
+
 
