@@ -1,0 +1,1 @@
+docker run -tid --name cioirise:0.1 -p 8080:8080 --gpus "device=1" --runtime=nvidia localai/localai:latest-aio-gpu-nvidia-cuda-12
