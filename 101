@@ -1,0 +1,2 @@
+oot@opexwise-ml2:~/LocalAI# docker run -tid --name cioirise:0.1 -p 8080:8080 --gpus "device=1" localai/localai:latest-aio-gpu-nvidia-cuda-12
+
